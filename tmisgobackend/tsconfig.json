@@ -25,8 +25,7 @@
     "strict": true,
     "moduleDetection": "force",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "ignoreDeprecations": "6.0"
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts"

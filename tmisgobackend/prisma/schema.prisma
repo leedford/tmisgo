@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+enum RegistrationStep {
+  NIN_VERIFICATION
+  PERSONAL_DETAILS
+  DOCUMENT_UPLOAD
+  PIN_SET
+  COMPLETED
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum DocumentType {
+  DEGREE_DIPLOMA
+  ACADEMIC_TRANSCRIPT
+  TEACHING_LICENSE
+}
+
+model Teacher {
+  id               String           @id @default(auto()) @map("_id") @db.ObjectId
+  nin              String           @unique
+  fullName         String
+  dateOfBirth      DateTime
+  gender           String
+  districtOfOrigin String
+  currentStep      RegistrationStep @default(NIN_VERIFICATION)
+  isVerified       Boolean          @default(false)
+  pinHash          String?          // 5-digit security PIN storage
+  documents        Document[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+}
+
+model Document {
+  id         String             @id @default(auto()) @map("_id") @db.ObjectId
+  teacherId  String             @db.ObjectId
+  teacher    Teacher            @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  type       DocumentType
+  fileUrl    String             // Secure URL from object storage
+  publicId   String             // Reference ID for management/deletions
+  status     VerificationStatus @default(PENDING)
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+
+  @@unique([teacherId, type])
+}

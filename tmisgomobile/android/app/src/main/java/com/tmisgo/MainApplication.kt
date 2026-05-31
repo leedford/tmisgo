@@ -1,4 +1,4 @@
-package com.saitiyo
+package com.tmisgo
 
 import android.app.Application
 import com.facebook.react.PackageList

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "saitiyo.app"
-               BlueprintName = "saitiyo"
-               ReferencedContainer = "container:saitiyo.xcodeproj">
+               BuildableName = "TMISGO.app"
+               BlueprintName = "TMISGO"
+               ReferencedContainer = "container:TMISGO.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "saitiyoTests.xctest"
-               BlueprintName = "saitiyoTests"
-               ReferencedContainer = "container:saitiyo.xcodeproj">
+               BuildableName = "TMISGOTests.xctest"
+               BlueprintName = "TMISGOTests"
+               ReferencedContainer = "container:TMISGO.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "saitiyo.app"
-            BlueprintName = "saitiyo"
-            ReferencedContainer = "container:saitiyo.xcodeproj">
+            BuildableName = "TMISGO.app"
+            BlueprintName = "TMISGO"
+            ReferencedContainer = "container:TMISGO.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "saitiyo.app"
-            BlueprintName = "saitiyo"
-            ReferencedContainer = "container:saitiyo.xcodeproj">
+            BuildableName = "TMISGO.app"
+            BlueprintName = "TMISGO"
+            ReferencedContainer = "container:TMISGO.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

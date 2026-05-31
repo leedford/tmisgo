@@ -1,8 +1,7 @@
 import { GraphQLError } from "graphql";
-import { PrismaClient } from "@prisma/client";
 import {parseISO} from "date-fns";
+import { prisma } from "../../lib/prisma";
 
-const prisma = new PrismaClient();
 
 const verificationResolvers = {
   Query: {

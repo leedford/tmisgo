@@ -6,9 +6,10 @@
 
 import { ApolloServer } from "@apollo/server"
 import { expressMiddleware } from '@as-integrations/express5';
-import { context } from "./graphql/context.js";
-import { allResolvers } from "./graphql/resolvers.js";
-import { typeDefs } from "./graphql/typeDefs.js";
+import context from "./graphql/context";
+import { allResolvers } from "./graphql/resolvers";
+import { typeDefs } from "./graphql/typeDefs";
+
 
 import express  from "express"
 import http from "http"
@@ -103,6 +104,7 @@ app.use(`${apiPrefix}/health`, (req, res) => {
   */
  
    app.use("/gql/", expressMiddleware(server,{context:context}))
+   
 
   }
  )();

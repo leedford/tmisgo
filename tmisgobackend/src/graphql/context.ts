@@ -1,6 +1,6 @@
 import { Request } from "express";
-import { AuthUser, GraphQLContext } from "../types/types.js";
-import { decodeJWT } from "../utils/managejwt.js";
+import { AuthUser, GraphQLContext } from "../types/types";
+import { decodeJWT } from "../utils/managejwt";
 
 
 
@@ -32,7 +32,7 @@ const getUserFromToken = async (token?: string): Promise<AuthUser | null> => {
 /**
  * Universal context generator for Express HTTP requests and WebSocket connections
  */
-export const context = async ({ req, connectionParams }: { 
+ const context = async ({ req, connectionParams }: { 
   req?: Request; 
   connectionParams?: Record<string, any> 
 }): Promise<GraphQLContext> => {
@@ -54,3 +54,5 @@ export const context = async ({ req, connectionParams }: {
 
   return { user: null };
 };
+
+export default context;

@@ -6,7 +6,7 @@ const Logo=()=>{
     return(
         <View>
           <Image
-             source={require("../../assets/images/artbuklogoblack.png")}
+             source={require("../../assets/images/tmisgologo.png")}
              style={{width:60,height:60,objectFit:"contain"}}
            />
         </View>

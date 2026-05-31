@@ -64,7 +64,7 @@ const SplashAuthScreen =()=>{
            }
                 
             } catch (error) {
-                console.log(error,"----------server errrrrr")
+                
                 setErrorType("SERVER")
                
                 

@@ -10,7 +10,7 @@ interface Props {
 const BodyText=({text,textStyles}:Props)=>{
 
     return (
-        <Text style={[{width:"auto",fontSize:16,fontWeight:"400",color:colors.light.text},textStyles]}>
+        <Text style={[{width:"auto",fontSize:16,fontWeight:"400",color:colors.textDark},textStyles]}>
           {text}
         </Text>
     )

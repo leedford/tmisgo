@@ -12,6 +12,7 @@ import { ApolloProvider } from '@apollo/client/react';
 import { GQL_URL } from './constants/api';
 import { setToken } from './redux/feature/auth.feature';
 import AuthModal from './components/AuthModal/AuthModal';
+import { OnboardingScreen } from './screens/onBoardingScreen/onBoardingScreen';
 
 
 const Main = () => {
@@ -49,6 +50,7 @@ const Main = () => {
     <ApolloProvider client={client}>
       {isInitializing ? <SplashAuthScreen /> : <NavHost />}
       <AuthModal />
+      {/* <OnboardingScreen/> */}
     </ApolloProvider>
   );
 };

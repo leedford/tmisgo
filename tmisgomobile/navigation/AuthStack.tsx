@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { screenNames } from './screenNames';
-import HomeScreen from '../screens/home/homeScreen';
 import GetOTPScreen from '../screens/getOTP/getOTP';
 import VerifyOTPScreen from '../screens/verifyOTP/VerifyOTP';
 import AddUserInfoScreen from '../screens/addUserInfo/addUserInfoScreen';

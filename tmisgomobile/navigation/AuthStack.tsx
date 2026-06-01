@@ -6,7 +6,9 @@ import AddUserInfoScreen from '../screens/addUserInfo/addUserInfoScreen';
 import AuthSuccessScreen from '../screens/authSuccessScreen/authSuccessScreen';
 import { NinVerificationScreen } from '../screens/ninVerification/ninVerification';
 import PersonalDetailsScreen from '../screens/personalDetails/personalDetails';
-import DocumentUpload from '../screens/documentUpload/documentUpload';
+import { DocumentUploadScreen } from '../screens/documentUpload/documentUpload';
+import { SetPinScreen } from '../screens/setPinScreen/setPinScreen';
+import { SuccessScreen } from '../screens/successScreen/successScreen';
 
 
 
@@ -26,7 +28,9 @@ const AuthStack =()=>{
                   <Stack.Screen name={screenNames.AuthSuccessScreen} component={AuthSuccessScreen} />
                   <Stack.Screen name={screenNames.NinVerification} component={NinVerificationScreen} />
                   <Stack.Screen name={screenNames.PersonalDetails} component={PersonalDetailsScreen} />
-                  <Stack.Screen name={screenNames.DocumentUpload} component={DocumentUpload} />
+                  <Stack.Screen name={screenNames.DocumentUpload} component={DocumentUploadScreen} />
+                  <Stack.Screen name={screenNames.SetPinScreen} component={SetPinScreen} />
+                  <Stack.Screen name={screenNames.SuccessScreen} component={SuccessScreen} />
 
         </Stack.Navigator>
 

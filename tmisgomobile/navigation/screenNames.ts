@@ -1,6 +1,5 @@
 
 
-
 export const screenNames = {
 
     //auth navigation
@@ -12,6 +11,8 @@ export const screenNames = {
     NinVerification:"NinVerification",
     PersonalDetails:"PersonalDetails",
     DocumentUpload:"DocumentUpload",
+    SetPinScreen:"SetPinScreen",
+    SuccessScreen:"SuccessScreen",
 
     //sites navigation
     MySitesScreen:"MySitesScreen",

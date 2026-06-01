@@ -9,7 +9,7 @@ interface Props {
 const HeadingText=({text,textStyles}:Props)=>{
 
     return (
-        <Text style={[{width:"auto",fontSize:30,fontWeight:"800",color:colors.black},textStyles]}>
+        <Text style={[{width:"auto",fontSize:20,fontWeight:"800",color:colors.black},textStyles]}>
           {text}
         </Text>
     )

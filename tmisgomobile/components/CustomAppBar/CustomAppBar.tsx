@@ -1,6 +1,5 @@
 import { TouchableOpacity, View } from "react-native"
 import HeadingText from "../HeadingText"
-import BodyText from "../BodyText"
 import Ionicons from "@react-native-vector-icons/ionicons"
 import { useNavigation } from "@react-navigation/native"
 
@@ -25,12 +24,12 @@ const CustomAppBar=({
            { canMoveBack && <TouchableOpacity 
              onPress={()=>navigation.goBack()}
              style={{width:50,height:50,justifyContent:"center",alignItems:"center"}}>
-           <Ionicons name="arrow-back-outline" size={40} color="black" />
+           <Ionicons name="arrow-back-outline" size={20} color="black" />
 
            </TouchableOpacity>}
            <View style={{width:"auto",paddingHorizontal:10}}>
              <HeadingText text={title}/>
-             <BodyText text={description ? description : ""} />
+             {/* <BodyText text={description ? description : ""} /> */}
            </View>
         </View>
     )

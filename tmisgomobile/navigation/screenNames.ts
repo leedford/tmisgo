@@ -9,6 +9,9 @@ export const screenNames = {
     VerifyOTP:"VerifyOTPScreen",
     AddUserInfoScreen:"AddUserInfoScreen",
     AuthSuccessScreen:"AuthSuccessScreen",
+    NinVerification:"NinVerification",
+    PersonalDetails:"PersonalDetails",
+    DocumentUpload:"DocumentUpload",
 
     //sites navigation
     MySitesScreen:"MySitesScreen",

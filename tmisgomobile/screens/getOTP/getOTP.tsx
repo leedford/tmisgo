@@ -105,7 +105,7 @@ const GetOTPScreen = () => {
           <Text style={styles.noAccountText}>Don't have an account? </Text>
           <TouchableOpacity 
             onPress={() =>{
-              // navigation.navigate(screenNames.NinVerification);
+              navigation.navigate(screenNames.NinVerification);
             }}
             activeOpacity={0.7}
           >

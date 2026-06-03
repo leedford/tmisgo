@@ -34,7 +34,15 @@ const verificationResolvers = {
         districtOfOrigin: string;
       }
     ) => {
-      const existingTeacher = await prisma.teacher.findUnique({
+      try {
+         
+
+        console.log("Initializing teacher profile with data:", {
+          nin,
+          fullName,
+          dateOfBirth,  }
+        );
+        const existingTeacher = await prisma.teacher.findUnique({
         where: { nin: nin.toUpperCase() },
       });
 
@@ -54,6 +62,13 @@ const verificationResolvers = {
       });
 
       return teacher;
+        
+      } catch (error) {
+        console.error("Error initializing teacher profile:", error);
+        throw new GraphQLError("Failed to initialize teacher profile", {
+          extensions: { code: "INTERNAL_SERVER_ERROR" },
+        });
+      }
     },
 
     uploadRegistrationDocument: async (

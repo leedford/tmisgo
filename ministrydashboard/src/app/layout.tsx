@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Saitiyo | Best Construction Site Management App",
+  title: "Ministry | Best Ministry Management App",
   description: "Manage your site on the go with Saitiyo - the ultimate mobile companion for construction site management.",
 };
 

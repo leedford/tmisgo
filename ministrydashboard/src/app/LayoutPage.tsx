@@ -19,11 +19,11 @@ import { GQL_URL } from "@/config/api";
 
 import { Suspense, useMemo } from "react";
 import { ApolloProvider } from "@apollo/client/react";
-import Loader from "./components/Loader";
+import Loader from "../components/Loader";
 
 const theme = {
   token: {
-    colorPrimary: '#4E46DD',
+    colorPrimary: '#FF4D00',
     borderRadius: 6,
     colorBgContainer: '#FFFFFF',
   },

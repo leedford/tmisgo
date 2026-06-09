@@ -1,42 +1,159 @@
-'use client';
+"use client"
 
-import React from 'react';
-import TextInput from '../components/TextInput';
-import CustomButton from '../components/CustomButton';
-import CustomPasswordInput from '../components/CustomPasswordInput';
 
-export default function HomePage() {
-  return (
-    <main className="min-h-screen bg-gray-50 px-4 py-10 sm:px-6 lg:px-8">
-      <section className="mx-auto flex min-h-[80vh] w-full max-w-5xl items-center justify-center">
-        <div className="w-full max-w-xl rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-100 sm:p-10">
-          <div className="mb-8 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em]">Welcome</p>
-            <h1 className="mt-2 text-3xl font-bold text-gray-900">Login to Your Account</h1>
-            <p className="mt-2 text-sm text-gray-500">Use your credentials to continue.</p>
-          </div>
+import { Col, Row } from 'antd';
+import CustomTextInput from '@/components/CustomTextInput';
+import CustomButton from '@/components/CustomButton';
+import Spacer from '@/components/Spacer';
+import Logo from '@/components/Logo';
+import { Formik } from 'formik';
+import * as Yup from "yup"
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import CustomToast from '@/components/CustomToast';
+import { useAppDispatch } from '@/redux/hooks';
+import { _getAdminByToken,_adminLogin } from '@/redux/actions/admin.actions';
+import { useEffect } from 'react';
+import { clearAdminLoginState } from '@/redux/features/admin.slice';
+import { keys } from '@/constants/localstorageKeys';
+import CustomPasswordInput from '@/components/CustomPasswordInput';
+import { useRouter } from 'next/navigation';
 
-          <form className="space-y-5">
-            <TextInput
-              label="Email"
-              placeholder="Enter youremail"
-              containerClassName="w-full"
-            />
+type Props = {}
 
-            <CustomPasswordInput
-              label="Password"
-              placeholder="Enter your password"
-              containerClassName="w-full"
-            />
-
-            <div className="pt-2">
-              <CustomButton type="primary" className="w-full h-11 text-base font-semibold">
-                Login
-              </CustomButton>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
-  );
+type formDataType = {
+    email: string
+    password: string
 }
+
+const Page = ({ }: Props) => {
+
+    const {
+        isError,
+        isSuccess,
+        msg,
+        loading
+    } = useSelector((state: RootState) => state.adminSlice)
+
+    const dispatch = useAppDispatch()
+    const router = useRouter();
+
+
+
+    useEffect(() => {
+        if (isSuccess) {
+
+            dispatch(clearAdminLoginState())
+            setTimeout(() => {
+                router.push("/admin/dashboard")
+            }, 2000)
+        }
+
+        if (isError) {
+            setTimeout(() => {
+                dispatch(clearAdminLoginState())
+            }, 4000)
+        }
+    }, [isSuccess, isError])
+
+
+
+
+
+    const handleLogin = (values: formDataType) => {
+        dispatch(_adminLogin(values))
+    }
+
+    const authenticateSuperAdmin = () => {
+
+        let token = localStorage.getItem(keys.ADMIN_ACCESS_TOKEN_KEY)
+        token && dispatch(_getAdminByToken({ token: token }))
+        //TODO if token is not found
+        //error
+    }
+
+
+
+    const LoginSchema = Yup.object().shape({
+        email: Yup.string().email("Invalid email").required("Email is required"),
+        password: Yup.string()
+            .min(6, "Password must have atleast 6 characters")
+            .max(50, "Too Long!")
+            .required("Password is required"),
+        //vite
+    })
+
+    return (
+        <Row style={{ height: "100vh" }} >
+            <Col xs={24} sm={24} md={8}></Col>
+            <Col xs={24} sm={24} md={8}>
+                {/* toast */}
+                <CustomToast
+                    show={isError || isSuccess}
+                    isError={isError}
+                    isSuccess={isSuccess}
+                    message={msg}
+                />
+                {/* form here */}
+                <Formik
+                    onSubmit={(values, actions) => {
+
+                        handleLogin(values)
+                        actions.resetForm()
+                    }}
+                    initialValues={{
+                        email: "",
+                        password: ""
+                    }}
+
+                    validationSchema={LoginSchema}
+                >
+                    {
+                        ({ values, errors, handleSubmit, handleChange, touched }) => {
+
+                            return (
+                                <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                                    <Spacer height={20} />
+                                    {/* add logo */}
+                                    <Logo />
+
+                                    <Spacer height={25} />
+
+
+                                    <CustomTextInput
+                                        placeholder='Email'
+                                        onChange={handleChange("email")}
+                                        value={values.email}
+                                        error={touched.email && errors.email ? errors.email : ""}
+                                    />
+                                    <Spacer height={15} />
+                                    <CustomPasswordInput
+                                        placeholder='Password'
+                                        onChange={handleChange("password")}
+                                        value={values.password}
+                                        error={touched.password && errors.password ? errors.password : ""}
+                                        disabled={false}
+                                    />
+
+                                    <Spacer height={25} />
+
+                                    <CustomButton
+                                        title='Login'
+                                        loading={loading}
+                                        onClick={() => handleSubmit()}
+
+                                    />
+
+
+                                </div>
+                            )
+                        }
+                    }
+                </Formik>
+            </Col>
+            <Col xs={24} sm={24} md={8} ></Col>
+        </Row>
+    )
+}
+
+export default Page

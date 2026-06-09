@@ -1,28 +1,33 @@
-import React from 'react';
-import { Input, type InputProps } from 'antd';
+import { Input } from 'antd'
+import { useState } from 'react';
 
-interface CustomPasswordInputProps extends InputProps {
-  label?: string;
-  error?: string;
-  containerClassName?: string;
+type Props = {
+    placeholder:string
+    onChange?:React.ChangeEventHandler<HTMLInputElement>
+    value?:string
+    error?:string
+    disabled:boolean
 }
 
-const CustomPasswordInput: React.FC<CustomPasswordInputProps> = ({
-  label,
-  error,
-  className,
-  containerClassName,
-  ...props
-}) => (
-  <div className={containerClassName}>
-    {label ? (
-      <label className="mb-1 block text-sm font-medium text-gray-700">{label}</label>
-    ) : null}
+const CustomPasswordInput = ({placeholder,onChange,value,error,disabled=false}: Props) => {
 
-    <Input.Password className={className} {...props} />
 
-    {error ? <p className="mt-1 text-xs text-red-500">{error}</p> : null}
-  </div>
-);
+  return (
+   <div style={{width:"100%"}}>
+    <Input.Password
+       placeholder={placeholder}
+       onChange={onChange}
+       value={value}
+       disabled={disabled}
+       style={{height:"40px",width:"100%"}}
+     />
+     <div
+      className='w-full text-[11px] text-red-500 text-left'
+     >
+      {error}
+      </div>
+   </div>
+  )
+}
 
-export default CustomPasswordInput;
+export default CustomPasswordInput

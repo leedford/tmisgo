@@ -1,28 +1,9 @@
-import { configureStore, createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
-interface AppState {
-  loading: boolean;
-}
-
-const initialState: AppState = {
-  loading: false,
-};
-
-const appSlice = createSlice({
-  name: "app",
-  initialState,
-  reducers: {
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
-  },
-});
-
-export const { setLoading } = appSlice.actions;
+import { configureStore} from "@reduxjs/toolkit";
+import adminSlice from "./features/admin.slice"
 
 export const store = configureStore({
   reducer: {
-    app: appSlice.reducer,
+    adminSlice
   },
 });
 

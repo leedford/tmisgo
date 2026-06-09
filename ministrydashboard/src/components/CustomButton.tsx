@@ -1,12 +1,22 @@
-import React from 'react';
-import { Button, type ButtonProps } from 'antd';
+import { Button } from "antd"
 
-interface CustomButtonProps extends ButtonProps {
-  label?: React.ReactNode;
+type Props = {
+  title: string
+  loading?: boolean
+  onClick: () => void
+  style?: any
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ label, children, ...props }) => {
-  return <Button {...props}>{children ?? label}</Button>;
-};
-
-export default CustomButton;
+const CustomButton = ({ title, loading, onClick, style }: Props) => {
+  return (
+    <Button
+      type="primary"
+      style={{ width: "100%", height: 40, ...style }}
+      onClick={onClick}
+      loading={loading}
+    >
+      {title}
+    </Button>
+  )
+}
+export default CustomButton

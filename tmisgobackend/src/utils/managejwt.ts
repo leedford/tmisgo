@@ -13,6 +13,7 @@ export const generateJWT = async (userInfo: object) => {
 export const decodeJWT = async (token: string | any) => {
   const secrete = process.env.ACCESS_TOKEN_SECRET
   if(!secrete){
+     //send email to dev team
      return
   }
   return await jwt.verify(token,secrete)

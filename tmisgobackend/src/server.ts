@@ -6,9 +6,10 @@
 
 import { ApolloServer } from "@apollo/server"
 import { expressMiddleware } from '@as-integrations/express5';
-import { context } from "./graphql/context";
+import context from "./graphql/context";
 import { allResolvers } from "./graphql/resolvers";
-import {typeDefs} from "./graphql/typeDefs";
+import { typeDefs } from "./graphql/typeDefs";
+
 
 import express  from "express"
 import http from "http"
@@ -46,7 +47,14 @@ const wsServer = new WebSocketServer<any>({
   path: '/gql',
 });
 
-const wsServerCleanup = useServer({schema},wsServer)
+const wsServerCleanup = useServer({
+  schema,
+  context:async (ctx)=>{
+    return context({
+      connectionParams:ctx.connectionParams as Record<string, any>
+    }) 
+  }
+},wsServer)
 
 // Set up Apollo Server
 
@@ -96,6 +104,7 @@ app.use(`${apiPrefix}/health`, (req, res) => {
   */
  
    app.use("/gql/", expressMiddleware(server,{context:context}))
+   
 
   }
  )();

@@ -8,9 +8,22 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.2.5",
+    "@ant-design/nextjs-registry": "^1.3.0",
+    "@apollo/client": "^4.2.1",
+    "@reduxjs/toolkit": "^2.12.0",
+    "antd": "^6.4.3",
+    "axios": "^1.17.0",
+    "formik": "^2.4.9",
+    "graphql": "^16.14.1",
+    "graphql-ws": "^6.0.8",
     "next": "16.2.7",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-redux": "^9.3.0",
+    "react-toastify": "^11.1.0",
+    "rxjs": "^7.8.1",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

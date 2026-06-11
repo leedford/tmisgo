@@ -4,3 +4,7 @@ node_modules
 
 /generated/prisma
 /dist
+
+/src/generated/prisma
+
+/generated/prisma
